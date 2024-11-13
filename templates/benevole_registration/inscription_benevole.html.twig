@@ -1,0 +1,20 @@
+{% extends '../base.html.twig' %}
+
+{% block title %}Inscription Bénévole{% endblock %}
+
+{% block body %}
+    <h1>Inscription Bénévole</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.nom) }}
+    {{ form_row(form.prenom) }}
+    {{ form_row(form.dateNaissance) }}
+    {{ form_row(form.experience) }}
+    {{ form_row(form.skills) }}
+    {{ form_row(form.motPasse) }}
+
+    <button type="submit" class="btn btn-primary">S'inscrire</button>
+    {{ form_end(form) }}
+
+    <p>Vous avez déjà un compte ? <a href="{{ path('login') }}">Connectez-vous ici</a></p>
+{% endblock %}

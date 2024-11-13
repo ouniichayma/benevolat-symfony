@@ -1,0 +1,8 @@
+.form-group {
+    margin-bottom: 15px;
+}
+
+button {
+    display: block;
+    margin: 10px auto; /* Centrer le bouton */
+}

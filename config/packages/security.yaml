@@ -1,0 +1,32 @@
+security:
+    password_hashers:
+        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+
+    providers:
+        benevole_provider:
+            entity:
+                class: App\Entity\Benevole
+                property: email  # Utilisez le champ email pour l'authentification
+
+    firewalls:
+        # No authentication needed for the registration and login pages
+        main:
+            pattern: ^/
+            form_login:
+                login_path: login
+                check_path: login
+                default_target_path: /dashboard  # Redirect to the dashboard after successful login
+            logout:
+                path: /logout
+                target: /
+
+            stateless: false
+
+    access_control:
+
+
+        # Deny authenticated users from accessing these pages
+        - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+
+        # Redirect authenticated users to the dashboard
+        - { path: ^/dashboard, roles: ROLE_USER }
